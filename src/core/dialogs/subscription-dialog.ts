@@ -440,12 +440,17 @@ export class SubscriptionDialog extends Dialog implements Subscription {
       const refresh = this.subscriptionExpires * 900;
       this._subscriptionRefresh = Math.floor(refresh / 1000);
       this._subscriptionRefreshLastSet = Math.floor(Date.now() / 1000);
-      this.refreshTimer = setTimeout(() => {
-        this.refreshTimer = undefined;
-        this._subscriptionRefresh = undefined;
-        this._subscriptionRefreshLastSet = undefined;
-        this.onRefresh(this.refresh());
-      }, refresh);
+      if (this.subscriptionExpires === 4294967295) {
+        this.logger.warn(`MC Request ... The subscription is expected to valid for entire lifecycle`);
+      } else {
+        this.refreshTimer = setTimeout(() => {
+          this.logger.log(`Refresh Timer Expired`);
+          this.refreshTimer = undefined;
+          this._subscriptionRefresh = undefined;
+          this._subscriptionRefreshLastSet = undefined;
+          this.onRefresh(this.refresh());
+        }, refresh);
+      }
     }
   }
 
