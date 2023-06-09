@@ -131,7 +131,7 @@ export declare class Registerer {
     /** True if the registerer is currently waiting for final response to a REGISTER request. */
     private get waiting();
     /** Emits when the registerer waiting state changes. */
-    private get waitingChange();
+    get waitingChange(): Emitter<boolean>;
     /**
      * Toggle waiting.
      */

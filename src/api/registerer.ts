@@ -767,7 +767,7 @@ export class Registerer {
   }
 
   /** Emits when the registerer waiting state changes. */
-  private get waitingChange(): Emitter<boolean> {
+  public get waitingChange(): Emitter<boolean> {
     return this._waitingEventEmitter;
   }
 
