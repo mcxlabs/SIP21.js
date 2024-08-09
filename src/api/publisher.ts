@@ -222,8 +222,12 @@ export class Publisher {
         } else {
           this.logger.warn("Expires header missing in a 200-class response to PUBLISH");
         }
-
-        if (this.pubRequestExpires !== 0) {
+        if (this.pubRequestExpires === 4294967295) {
+          this.logger.warn(`MC Request ... The subscription is expected to valid for entire lifecycle`);
+          if (this._state !== PublisherState.Published) {
+            this.stateTransition(PublisherState.Published);
+          }
+        } else if (this.pubRequestExpires !== 0) {
           // Schedule refresh
           this.publishRefreshTimer = setTimeout(() => this.refreshRequest(), this.pubRequestExpires * 900);
           if (this._state !== PublisherState.Published) {
