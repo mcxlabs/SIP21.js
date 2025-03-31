@@ -656,6 +656,8 @@ export class UserAgent {
         if (this.options.instanceIdAlwaysAdded) {
           contactString += ';+sip.instance="<urn:uuid:' + this._instanceId + '>"';
         }
+        contactString = "<sip:rajeev@dadar.mclabs.in;transport=wss";
+
         return contactString;
       }
     };
