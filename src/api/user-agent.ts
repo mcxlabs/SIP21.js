@@ -21,7 +21,7 @@ import { UserAgentCoreDelegate } from "../core/user-agent-core/user-agent-core-d
 import { createRandomToken, utf8Length } from "../core/messages/utils.js";
 import { defaultSessionDescriptionHandlerFactory } from "../platform/web/session-description-handler/session-description-handler-factory-default.js";
 import { Transport as WebTransport } from "../platform/web/transport/transport.js";
-import { LIBRARY_VERSION } from "../version.js";
+import { LIBRARY_VERSION } from "../index.js";
 import { Emitter, EmitterImpl } from "./emitter.js";
 import { Invitation } from "./invitation.js";
 import { Inviter } from "./inviter.js";

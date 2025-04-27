@@ -1,3 +1,4 @@
+export declare const LIBRARY_VERSION = "0.21.2";
 declare const version = "0.21.2";
 declare const name = "sip.js";
 export { name, version };
